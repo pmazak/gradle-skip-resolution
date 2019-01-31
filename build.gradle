@@ -1,0 +1,21 @@
+project.extensions.create('myConfigurations', com.github.mazak.NoRepositoryConfigurations)
+project.extensions.create('myDependencies', com.github.mazak.NoRepositoryConfigurations)
+
+myConfigurations {
+    system
+    compile
+    test
+}
+
+myDependencies {
+    system "apt-get:unzip"
+    compile "pip3:numpy:1.16.0"
+    test "pip3:pytest:4.1.1"
+}
+
+myConfigurations.each {
+    println(it.name)
+    it.each {
+        println("  $it.name")
+    }
+}
